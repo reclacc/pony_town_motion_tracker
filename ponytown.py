@@ -56,28 +56,28 @@ class MovementDetector:
                 print('Program stopping...')
                 return False
             if self.is_program_window_active() and key.char == 'd':
-                self.debug_mode = not self.debug_mode
-                print('Debug mode ' + ('enabled' if self.debug_mode else 'disabled'))
-                if self.debug_mode:
-                    self.debug_dir = 'debug_images'
-                    os.makedirs(self.debug_dir, exist_ok=True)
+                self.toggle_debug_mode()
         except AttributeError:
             pass
+
+    def toggle_debug_mode(self):
+        self.debug_mode = not self.debug_mode
+        print('Debug mode ' + ('enabled' if self.debug_mode else 'disabled'))
+        if self.debug_mode:
+            os.makedirs(self.debug_dir, exist_ok=True)
 
     def get_cursor_position(self):
         pt = POINT()
         windll.user32.GetCursorPos(byref(pt))
         return Position(pt.x, pt.y)
     
-    def capture_screen_region(self, center_pos: Position, size: int = 400):
-        if size != self.size:
-            size = self.size
-        half_size = size // 2
+    def capture_screen_region(self, center_pos: Position):
+        half_size = self.size // 2
         monitor = {
             "top": center_pos.y - half_size,
             "left": center_pos.x - half_size,
-            "width": size,
-            "height": size
+            "width": self.size,
+            "height": self.size
         }
         screenshot = self.sct.grab(monitor)
         return cv2.cvtColor(np.array(screenshot), cv2.COLOR_BGRA2BGR)
@@ -129,10 +129,8 @@ class MovementDetector:
         
         return movement_center
 
-    def determine_direction(self, current_pos: Position, movement_pos: Position, size: int = 400):
-        if size != self.size:
-            size = self.size
-        half_size = size // 2
+    def determine_direction(self, current_pos: Position, movement_pos: Position):
+        half_size = self.size // 2
         relative_x = current_pos.x - (movement_pos.x + current_pos.x - half_size)
         relative_y = current_pos.y - (movement_pos.y + current_pos.y - half_size)
         
