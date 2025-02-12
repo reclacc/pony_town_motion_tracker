@@ -1,5 +1,16 @@
 # Отслеживание движения вокруг курсора для Pony Town
-
+<p align="center">
+    <img src="https://pony.town/assets/images/logo-large-57d9b1947a.png"
+        height="130">
+</p>
+<p align="center">
+    <a href="https://choosealicense.com/licenses/mit/" alt="License: MIT">
+        <img src="https://img.shields.io/badge/License-MIT-green" /></a>
+    <a href="https://www.python.org/" alt="Language: Python 3.9.5">
+        <img src="https://img.shields.io/badge/Language-Python_3.9.5-blue" /></a>
+    <a href="https://pony.town/" alt="Pony Town">
+        <img src="https://img.shields.io/badge/Pony_Town-red?style=flat&logo=kofi&logoColor=white" /></a>
+</p>
 Короче, Программист, я тебе тут программулину накатал и в благородство играть не буду: разберёшься как работает — и мы в расчете. Заодно посмотрим, как быстро у тебя башка после этого кода прояснится. А по твоей теме постараюсь разузнать. Хрен его знает, на кой ляд тебе этот моушн трекинг в игре про пони сдался, но я в чужие дела не лезу, хочешь отслеживать движение, значит есть за что...
 
 ## Что это за зверь такой?
